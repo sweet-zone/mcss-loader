@@ -1,0 +1,21 @@
+{
+  "name": "mcss-loader",
+  "version": "0.1.1",
+  "description": "mcss loader for webpack",
+  "main": "index.js",
+  "keywords": [
+    "webpack",
+    "loader",
+    "mcss"
+  ],
+  "author": "zjzhome <zjzhome@126.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "mcss": "^0.5.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.23.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.8"
+  }
+}
