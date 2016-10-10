@@ -44,8 +44,11 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
-	__webpack_require__(1)
+	// normal
+	__webpack_require__(1);
+
+	// import abstract ./ ../  view detail in file './mcss/test2.mcss'
+	__webpack_require__(5);
 
 /***/ },
 /* 1 */
@@ -360,7 +363,6 @@
 	function applyToTag(styleElement, obj) {
 		var css = obj.css;
 		var media = obj.media;
-		var sourceMap = obj.sourceMap;
 
 		if(media) {
 			styleElement.setAttribute("media", media)
@@ -378,7 +380,6 @@
 
 	function updateLink(linkElement, obj) {
 		var css = obj.css;
-		var media = obj.media;
 		var sourceMap = obj.sourceMap;
 
 		if(sourceMap) {
@@ -395,6 +396,46 @@
 		if(oldSrc)
 			URL.revokeObjectURL(oldSrc);
 	}
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(6);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../index.js?sourceMap!./test2.mcss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../index.js?sourceMap!./test2.mcss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".u-outer{\n\tcolor:#000;\n}\n.u-inner{\n\tfont-size:12px;\n}\n.u-test2{\n\tcolor:#09c;\n}", "", {"version":3,"sources":["/./mcss/test2.mcss"],"names":[],"mappings":"AAAA;CACC,WAAW;CACX;AACD;CACC,eAAe;CACf;AACD;CACC,WAAW;CACX","file":"test2.mcss","sourcesContent":[".u-outer{\n\tcolor:#000;\n}\n.u-inner{\n\tfont-size:12px;\n}\n.u-test2{\n\tcolor:#09c;\n}"],"sourceRoot":"webpack://"}]);
+
+	// exports
 
 
 /***/ }

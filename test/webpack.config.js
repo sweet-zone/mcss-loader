@@ -9,6 +9,16 @@ module.exports = {
         loaders: [{
             test: /\.mcss$/,
             loader: 'style-loader!css-loader?sourceMap!../index.js?sourceMap'
+            // loader: 'style-loader!css-loader?sourceMap!../index.js?'+JSON.stringify({
+            //     format: 1,
+            //     pathes:[
+            //         './mcss',
+            //         './mcss/subMcss'
+            //     ],
+            //     importCSS: false,
+            //     indent: '\t',
+            //     sourceMap: 1
+            // })
         }]
     }
-}
+};
