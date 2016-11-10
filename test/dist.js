@@ -66,8 +66,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js?sourceMap!./../index.js?sourceMap!./index.mcss", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js?sourceMap!./../index.js?sourceMap!./index.mcss");
+			module.hot.accept("!!./../node_modules/css-loader/index.js?sourceMap!./../index.js?include=./include!./index.mcss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js?sourceMap!./../index.js?include=./include!./index.mcss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -85,7 +85,7 @@
 
 
 	// module
-	exports.push([module.id, ".title{\n\tcolor:#ccc;\n}\n.title a{\n\tcolor:#000;\n}\n.title a:hover{\n\tcolor:#666;\n}", "", {"version":3,"sources":["/./index.mcss"],"names":[],"mappings":"AAAA;CACC,WAAW;CACX;AACD;CACC,WAAW;CACX;AACD;CACC,WAAW;CACX","file":"index.mcss","sourcesContent":[".title{\n\tcolor:#ccc;\n}\n.title a{\n\tcolor:#000;\n}\n.title a:hover{\n\tcolor:#666;\n}"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".title{\n\tcolor:#ccc;\n}\n.title a{\n\tcolor:#000;\n}\n.title a:hover{\n\tcolor:#666;\n}\n.cube{\n\twidth:100px;\n\theight:100px;\n\tline-height:100px;\n\ttext-align:center;\n\tcolor:#333;\n\tbackground-color:#f1f1f1;\n}", "", {"version":3,"sources":["/./index.mcss"],"names":[],"mappings":"AAAA;CACC,WAAW;CACX;AACD;CACC,WAAW;CACX;AACD;CACC,WAAW;CACX;AACD;CACC,YAAY;CACZ,aAAa;CACb,kBAAkB;CAClB,kBAAkB;CAClB,WAAW;CACX,yBAAyB;CACzB","file":"index.mcss","sourcesContent":[".title{\n\tcolor:#ccc;\n}\n.title a{\n\tcolor:#000;\n}\n.title a:hover{\n\tcolor:#666;\n}\n.cube{\n\twidth:100px;\n\theight:100px;\n\tline-height:100px;\n\ttext-align:center;\n\tcolor:#333;\n\tbackground-color:#f1f1f1;\n}"],"sourceRoot":"webpack://"}]);
 
 	// exports
 
@@ -414,8 +414,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../index.js?sourceMap!./test2.mcss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../index.js?sourceMap!./test2.mcss");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../index.js?include=./include!./test2.mcss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../index.js?include=./include!./test2.mcss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});

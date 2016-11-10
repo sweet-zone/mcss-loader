@@ -8,7 +8,7 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.mcss$/,
-            loader: 'style-loader!css-loader?sourceMap!../index.js?sourceMap'
+            loader: 'style-loader!css-loader?sourceMap!../index.js?include=./include'
             // loader: 'style-loader!css-loader?sourceMap!../index.js?'+JSON.stringify({
             //     format: 1,
             //     pathes:[
