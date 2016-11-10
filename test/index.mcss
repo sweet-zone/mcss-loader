@@ -1,3 +1,4 @@
+@import "mixin.mcss";
 
 .title {
 	color: #ccc;
@@ -9,4 +10,12 @@
 			color: #666;
 		}
 	}
+}
+
+.cube {
+	$cube(100px);
+	line-height: 100px;
+	text-align: center;
+	color: #333;
+	background-color: #f1f1f1;
 }
