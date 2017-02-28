@@ -24,7 +24,7 @@ module.exports = function(content) {
 
     if (include) { instance.include(include); }
 
-    instance.translate().done(function(text) {//the param 'content' shouldn't be set in translate(content)
+    instance.translate(content).done(function(text) {
         callback(null, text);
     }).fail(function(err) {
         callback(err);
