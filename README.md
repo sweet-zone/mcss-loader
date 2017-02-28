@@ -10,38 +10,43 @@ npm install mcss-loader --save-dev
 ## Usage
 
 ### webpack config
-```javascript
+
+```json
 module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.mcss$/,
-        loader: "style!css!mcss"
-      }
-    ]
-  }
+    module: {
+        loaders: [{
+            test: /\.mcss$/,
+            loader: 'style-loader!css-loader!mcss-loader'
+        }]
+    }
 };
 ```
 
-Or add a config option via loader-query if necessary
-```javascript
+if you use vue-loader: 
+
+```json
 module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.mcss$/,
-        loader: "style!css!mcss?" + JSON.stringify({
-                 format: 1,
-                 pathes:[
-                     './src/mcss'
-                 ],
-                 importCSS: false,
-                 indent: '\t'
-             })
-      }
-    ]
-  }
+    module: {
+        loaders: [{
+            test: /\.vue$/,
+            loader: 'vue'
+        }]
+    },
+    vue: {
+        loaders: {
+            mcss: 'vue-style-loader!css-loader!mcss-loader'
+        }
+    }
 };
 ```
 
-Then you only need to write: `require("./logic.mcss")`
+*Note: if you are using webpack2, please see [http://vue-loader.vuejs.org/en/configurations/advanced.html](http://vue-loader.vuejs.org/en/configurations/advanced.html)* 
+
+More demos in [demo](https://github.com/zjzhome/mcss-loader/tree/master/demo)
+
+
+
+
+
+
+
