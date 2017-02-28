@@ -11,7 +11,7 @@ npm install mcss-loader --save-dev
 
 ### webpack config
 
-```json
+```js
 module.exports = {
     module: {
         loaders: [{
@@ -24,7 +24,7 @@ module.exports = {
 
 if you use vue-loader: 
 
-```json
+```js
 module.exports = {
     module: {
         loaders: [{
