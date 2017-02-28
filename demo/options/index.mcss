@@ -1,0 +1,13 @@
+
+@import "mixin.mcss";
+
+.parent {
+    color: #ccc;
+
+    .child {
+        font-size: 30px;
+
+        $cube(100px);
+        border: 1px solid #000;
+    }
+}

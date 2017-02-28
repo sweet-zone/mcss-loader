@@ -5,7 +5,7 @@ mcss loader for webpack
 
 ```bash
 npm install mcss-loader --save-dev
-````
+```
 
 ## Usage
 

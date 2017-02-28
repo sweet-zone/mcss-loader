@@ -3,6 +3,10 @@
   "version": "0.2.0",
   "description": "mcss loader for webpack",
   "main": "index.js",
+  "scripts": {
+    "demo": "cd demo && webpack",
+    "demo-vue": "cd demo && webpack --config webpack.vue.config.js"
+  },
   "keywords": [
     "webpack",
     "loader",
@@ -14,8 +18,12 @@
     "mcss": "^0.5.1"
   },
   "devDependencies": {
-    "css-loader": "^0.23.0",
-    "style-loader": "^0.13.0",
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.13.2",
+    "vue": "^2.2.1",
+    "vue-loader": "^11.1.3",
+    "vue-style-loader": "^2.0.3",
+    "vue-template-compiler": "^2.2.1",
     "webpack": "^1.12.8"
   },
   "dependencies": {
