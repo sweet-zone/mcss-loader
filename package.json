@@ -14,9 +14,6 @@
   ],
   "author": "zjzhome <zjzhome@126.com>",
   "license": "MIT",
-  "peerDependencies": {
-    "mcss": "^0.5.1"
-  },
   "devDependencies": {
     "css-loader": "^0.23.1",
     "style-loader": "^0.13.2",
@@ -27,6 +24,7 @@
     "webpack": "^1.12.8"
   },
   "dependencies": {
-    "loader-utils": "^0.2.15"
+    "loader-utils": "^0.2.15",
+    "mcss": "^0.5.1"
   }
 }
