@@ -1,32 +1,79 @@
-var path = require('path');
-var mcss = require('mcss');
-var loaderUtils = require('loader-utils');
+const path = require('path');
+const mcss = require('mcss');
+const loaderUtils = require('loader-utils');
+const { Translator, Interpreter } = mcss
 
 module.exports = function(content) {
     this.cacheable && this.cacheable();
 
-    var callback = this.async();
-    var options = loaderUtils.parseQuery(this.query);
+    const callback = this.async();
+    const options = loaderUtils.parseQuery(this.query);
 
     options.filename = this.resource; //fix the path bug: @import string contain char like '../../'
 
-    var include;
-    var cwd = process.cwd();
-
+    // include to pathes
     if (options.include) {
-        if (!Array.isArray(options.include)) { options.include = [ options.include ]; }
-        include = options.include.map(function (p) {
-            return path.resolve(cwd, p);
-        });
+      options.pathes = options.pathes || [];
+      options.pathes.concat(ensureArray(options.include));
     }
 
-    var instance = mcss(options);
+    // path to absolute
+    if (Array.isArray(options.pathes)) {
+      const cwd = process.cwd();
+      options.pathes = options.pathes.map(function (p) {
+          return path.resolve(cwd, p);
+      });
+    }
 
-    if (include) { instance.include(include); }
-
-    instance.translate(content).done(function(text) {
-        callback(null, text);
-    }).fail(function(err) {
-        callback(err);
+    translate(content, options).then(result => {
+      result.imports.forEach(imp => {
+        this.addDependency(imp);
+      });
+      callback(null, result.css || '');
+    }).catch(e => {
+      callback(e);
     });
 };
+
+function ensureArray(target) {
+  if (!target) {
+    return []
+  }
+
+  if (Array.isArray(target)) {
+    return target
+  }
+
+  return [target]
+}
+
+function translate( string, options ) {
+  const instance = mcss(options);
+
+  const translator = new Translator(options);
+  const interpreter = new Interpreter(options);
+
+  const walkers = options.walkers;
+  if (walkers.length){
+      walkers.forEach(function(hook){
+          hook && interpreter.on(hook);
+      })
+  }
+
+  return new Promise(function(resolve, reject) {
+    instance.parse(string).done(function(ast) {
+      try{
+          ast = interpreter.interpret(ast);
+
+          resolve( {
+            css: translator.translate(ast),
+            imports: interpreter._globalImports || []
+          } )
+      }catch(e){
+          reject(e);
+      }
+    } ).fail( e => {
+      reject(e);
+    } )
+  });
+}
