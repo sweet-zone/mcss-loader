@@ -47,7 +47,7 @@ function ensureArray(target) {
   return [target]
 }
 
-function translate( string, options ) {
+function translate(string, options) {
   const instance = mcss(options);
 
   const translator = new Translator(options);
