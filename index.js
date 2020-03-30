@@ -7,14 +7,14 @@ module.exports = function(content) {
     this.cacheable && this.cacheable();
 
     const callback = this.async();
-    const options = loaderUtils.parseQuery(this.query);
+    const options = loaderUtils.getOptions(this) || {};
 
     options.filename = this.resource; //fix the path bug: @import string contain char like '../../'
 
     // include to pathes
     if (options.include) {
       options.pathes = options.pathes || [];
-      options.pathes.concat(ensureArray(options.include));
+      options.pathes = options.pathes.concat(ensureArray(options.include));
     }
 
     // path to absolute
@@ -37,14 +37,14 @@ module.exports = function(content) {
 
 function ensureArray(target) {
   if (!target) {
-    return []
+    return [];
   }
 
   if (Array.isArray(target)) {
-    return target
+    return target;
   }
 
-  return [target]
+  return [target];
 }
 
 function translate(string, options) {

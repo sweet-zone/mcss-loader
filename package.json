@@ -27,6 +27,6 @@
     "webpack": "^1.12.8"
   },
   "dependencies": {
-    "loader-utils": "^0.2.15"
+    "loader-utils": "^1.2.3"
   }
 }
